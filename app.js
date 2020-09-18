@@ -11,3 +11,37 @@ I just told you! You've killed me! Fry! Quit doing the right thing, you jerk! Mi
   `Man braid celiac synth freegan readymade, pitchfork fam salvia waistcoat lomo bitters gentrify four loko. Pitchfork semiotics post-ironic vegan. Tofu meditation microdosing hashtag semiotics venmo. Flexitarian vape tilde taiyaki. Prism poutine farm-to-table, messenger bag vegan taxidermy tattooed sartorial squid jean shorts fixie selvage trust fund vape.`,
   `Rutters Plate Fleet boom chandler Brethren of the Coast handsomely lookout marooned brigantine knave. Buccaneer gangway jack rum loot spyglass line Jack Tar fore gaff. Gaff topmast scuttle ballast swab draught measured fer yer chains dance the hempen jig Chain Shot yardarm.`,
 ];
+
+// get target elements
+
+const form = document.querySelector('.lorem-form');
+const input = document.getElementById('amount');
+const article = document.querySelector('.lorem-text');
+
+// add event listener to form when 'submit' event occurs
+form.addEventListener('submit', (e) =>{
+  // prevent default behaviour
+  e.preventDefault();
+
+  // get value from input, need to convert string into int
+  const value = parseInt(input.value);
+  
+  // set up random number generator
+  const random = Math.floor(Math.random() * text.length);
+
+  // condition to avoid: value = NaN or value < 0 or value > 9
+  if (isNaN(value) || value <= 0 || value > 9) {
+
+    // if condition, return 1 paragraph only
+    article.innerHTML = `<p class="result">${text[random]}</p>`;
+  }
+
+  else {
+    let tempText = (text.slice(0,value)).map( (paragraph) =>{
+      return `<p class="result">${paragraph}</p>`;
+    }).join("");
+
+    article.innerHTML = tempText;
+  }
+
+})
